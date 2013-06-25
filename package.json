@@ -7,8 +7,8 @@
     "Oleg Kutkov <olegkutkov@yandex-team.ru>",
     "Dmitry Unkovsky <diunko@yandex-team.ru>"
   ],
-  "homepage": "https://github.com/cocaine/cocaine-http-proxy-nodejs",
-  "repository": "git://github.com/cocaine/cocaine-http-proxy-nodejs.git",
+  "homepage": "https://github.com/diunko/cocaine-http-proxy-nodejs",
+  "repository": "git://github.com/diunko/cocaine-http-proxy-nodejs.git",
   "bin" : { "cocaine-proxy" : "./bin/cocaine-proxy.js" },
   "engines": {
     "node": "0.8.0-0.10.999"
