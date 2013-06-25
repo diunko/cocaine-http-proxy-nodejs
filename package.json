@@ -1,5 +1,5 @@
 {
-  "name": "cocaine-framework-nodejs",
+  "name": "cocaine-http-proxy",
   "version": "0.1.0",
   "description": "Route http requests to Cocaine cloud",
   "author": "Cocaine Project <cocaine@yandex-team.ru>",
@@ -9,6 +9,7 @@
   ],
   "homepage": "https://github.com/cocaine/cocaine-http-proxy-nodejs",
   "repository": "git://github.com/cocaine/cocaine-http-proxy-nodejs.git",
+  "bin" : { "cocaine-proxy" : "./bin/cocaine-proxy.js" },
   "engines": {
     "node": "0.8.0-0.10.999"
   },
