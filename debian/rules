@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+VERSION=0.8
+NODE_PATH=/opt/nodejs/$(VERSION)
+
+NODE_MODULE_NAME=cocaine-http-proxy
+
+LOCAL_PATH=debian/cocaine-http-proxy-nodejs
+INSTALL_PREFIX=$(LOCAL_PATH)$(NODE_PATH)
+
+NODE_BIN=$(NODE_PATH)/bin/node
+NPM_BIN=$(NODE_PATH)/bin/npm
+NODE_GYP=$(NODE_PATH)/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js
+
+%:
+	dh $@
+
+override_dh_auto_install:	
+	$(NPM_BIN) install --global --production --prefix=$(INSTALL_PREFIX)
+	
+override_dh_auto_clean:
+	$(NODE_BIN) $(NODE_GYP) clean
+

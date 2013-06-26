@@ -1,0 +1,16 @@
+Source: cocaine-http-proxy-nodejs
+Section: web
+Priority: extra
+Maintainer: Oleg Kutkov <olegkutkov@yandex-team.ru>
+Build-Depends:
+ debhelper (>= 7.0.13),
+ nodejs-0.8 (= 0.8.25),
+ cocaine-framework-nodejs-0.8
+Standards-Version: 3.8.4
+Vcs-Browser: https://github.yandex-team.ru/NodeJS/cocaine-nodejs-framework-deb
+Vcs-Git: https://github.com/diunko/cocaine-http-proxy-nodejs.git
+
+Package: cocaine-http-proxy-nodejs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, nodejs-0.8 (= 0.8.25), cocaine-framework-nodejs-0.8
+Description: Route http requests to the Cocaine cloud
