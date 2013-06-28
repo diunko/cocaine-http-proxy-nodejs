@@ -41,7 +41,9 @@ if (cluster.isMaster) {
           })
           rq.on("end",function(){
             var rs1 = app.invoke(se[1],Buffer.concat(chunks))
-            rs1.pipe(rs0)
+            rs1.once("data",function(chunk){
+              rs1.pipe(rs0)
+            })
           })
         }
       })
