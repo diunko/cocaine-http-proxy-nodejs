@@ -1,4 +1,4 @@
-#!/opt/nodejs/0.8/bin/node
+#!/opt/nodejs/0.10/bin/node
 
 var cluster = require("cluster")
 
@@ -10,9 +10,11 @@ var Proxy = require("cocaine-http-proxy").Proxy
 var numWorkers = argv["num-workers"] || 1
 var listenPort = parseInt(argv["port"])
 
-listenPort = isNaN(listenPort) ? listenPort : 8181
+listenPort = isNaN(listenPort) ? 8181 : listenPort
 
 var dbg = 0
+
+var rn2 = Buffer("\r\n\r\n")
 
 if (cluster.isMaster) {
   for (var i = 0; i < numWorkers; i++) {
@@ -42,6 +44,10 @@ if (cluster.isMaster) {
           rq.on("end",function(){
             var rs1 = app.enqueue(se[1],Buffer.concat(chunks))
             rs1.once("data",function(chunk){
+              var i = indexOf(chunk,rn2)
+              if(i !== -1){
+                rs0.write(chunk.slice(i + rn2.length))
+              }
               rs1.pipe(rs0)
             })
           })
@@ -53,4 +59,19 @@ if (cluster.isMaster) {
   P.listen(listenPort)
 }
 
+function indexOf(b,c){
+  var len = b.length - c.length
+search:
+  for(var i = 0; i < len; i++){
+match:
+    for(var j = 0; j < c.length; j++){
+      if(b[i+j] !== c[j]){
+        i += j
+        continue search
+      }
+    }
+    return i
+  }
+  return -1
+}
 
