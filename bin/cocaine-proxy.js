@@ -40,7 +40,7 @@ if (cluster.isMaster) {
             chunks.push(chunk)
           })
           rq.on("end",function(){
-            var rs1 = app.invoke(se[1],Buffer.concat(chunks))
+            var rs1 = app.enqueue(se[1],Buffer.concat(chunks))
             rs1.once("data",function(chunk){
               rs1.pipe(rs0)
             })
