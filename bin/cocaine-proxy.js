@@ -1,6 +1,6 @@
 #!/opt/nodejs/0.8/bin/node
 
-var cluster = require("cluster");
+var cluster = require("cluster")
 
 var argv = require("optimist").argv
 
@@ -50,9 +50,5 @@ if (cluster.isMaster) {
 
   P.listen(listenPort)
 }
-
-
-
-
 
 
