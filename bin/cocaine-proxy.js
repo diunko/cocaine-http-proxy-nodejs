@@ -1,4 +1,4 @@
-#!/opt/nodejs/0.10/bin/node
+#!/usr/bin/env node
 
 var cluster = require("cluster")
 
